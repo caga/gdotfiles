@@ -1,0 +1,89 @@
+# Mutt configuration
+
+# Folder with emails
+set folder = "~/.mail/work"
+
+# Type of mailbox
+set mbox_type = Maildir
+# Directory to poll for new mail
+set spoolfile = +Inbox
+#Directory to save sent messages into
+set record = +Sent
+# Sets the drafts folder
+set postponed = +Drafts
+set trash = +Trash
+# File that headers will be cached
+set header_cache = "~/.cache/mutt/work/header_cache"
+set message_cachedir = "~/.cache/mutt/work/message_cache"
+
+set from="cagatay.cakir@sanayi.gov.tr"
+set realname = "Cagatay Cakir"
+
+
+set sendmail = "msmtp -a cagatay.cakir@sanayi.gov.tr"
+set use_from=yes
+# sort by threads
+set sort = threads
+# Sort threads by last date recieved - newest first
+set sort_aux = reverse-last-date-received
+# Show date in year/mount/day hour:minute format
+set date_format="%y/%m/%d  %I:%M%p"
+# Mailcap file is used to tell mmutt how to open different types of file
+set mailcap_path = "~/.config/mutt/mailcap"
+# Tells Mutt to automatically view files with these mime types
+auto_view text/html
+#Order to try and show multipart emails
+alternative_order text/plain text/enriched text/html
+
+# Navigation Settings
+bind index,pager g noop
+macro index,pager gi "<change-folder>=Inbox<enter>" "go to inbox"
+macro index,pager gs "<change-folder>=Sent<enter>" "go to sent"
+macro index,pager gd "<change-folder>=Drafts<enter>" "go to drafts"
+macro index,pager gt "<change-folder>=Trash<enter>" "go to trash"
+
+
+#Syncronization settings ['s' to sync]
+macro index S "<shell-escape>mbsync -V work <enter>" "sync email"
+
+# SMTP settings
+# use an external command to get the password
+set my_smtp_pass = `pass cagatay.cakir@sanayi.gov.tr`
+# set the smtp url
+set smtp_url = "smtp://cagatay.cakir:$my_smtp_pass@127.0.0.1:5003"
+set ssl_starttls = no
+unset ssl_force_tls
+
+# Mail Editor
+
+set editor = vim
+
+# Display Sidebar
+
+#set sidebar_visible=yes
+#set sidebar_format = "%B%<F? [%F]>%* %<N?%N/>%S"
+#set mail_check_stats
+#set sidebar_width=20
+#set sidebar_visible=yes
+
+# Sidebar navigation
+
+#bind index,pager \CP sidebar-prev #ctrl-n Next Folder
+#bind index,pager \CN sidebar-next #Ctrl-p Previous Folder
+#bind index,pager \CI sidebar-open #Ctrl-i Open Folder
+#bind index,pager \CB sidebar-toggle-visible #Ctrl-b Toggle sidebar
+
+    # 'L' performs a notmuch query, showing only the results
+    # macro index L "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+    # 'a' shows all messages again (supersedes default <alias> binding)
+    # macro index a "<limit>all\n" "show all messages (undo limit)"
+##############
+#  Contacts  #
+##############
+
+# When looking for contacts, use this command
+set query_command= "abook --mutt-query '%s'"
+# Add current sender to address book
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+# Auto-complete email addresses by pushing tab
+bind editor <Tab> complete-query

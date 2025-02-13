@@ -1,0 +1,31 @@
+#!/bin/bash
+echo " Bismillah"
+userid=$(id $(logname)|grep -Eo ^uid='[0-9]{1,4}'|grep -Eo '[0-9]{1,4}')
+groupid=$(id $(logname)|grep -Eo gid='[0-9]{1,4}'|grep -Eo '[0-9]{1,4}')
+loginname=$(logname)
+
+if [[ $loginname == "root" ]]
+then
+    loginhome="/root"
+    echo "heyo"
+    else
+	    loginhome="/home/$(logname)"
+fi
+username="cagatay.cakir"
+su -c 'pass cagatay.cakir@sanayi.gov.tr' osman
+password=$(su -c 'pass cagatay.cakir@sanayi.gov.tr' osman)
+echo $password
+mount //10.6.3.66/projects "${loginhome}/media/projects" -o "username=${username},password=${password},uid=${userid},gid=${groupid}"
+echo "project folder is mounted under ${loginhome}/media/projects"
+
+mount //10.6.3.66/projects_ipa-2 ${loginhome}/media/projects_ipa-2 -o "username=${username},password=${password},uid=${userid},gid=${groupid}"
+echo "project_ipa-2 folder is mounted under ${loginhome}/media/projects_ipa-2"
+
+mount //10.6.3.66/rcp-cid "${loginhome}/media/rcp-cid" -o "username=${username},password=${password},uid=${userid},gid=${groupid}"
+
+echo "rcp-cid folder is mounted under ${loginhome}/media/rcp-cid"
+# mountpoint -q /media/rcp-cid && echo "shared folder is mounted under ${loginhome}/media/rcp-cid"
+
+mount //10.6.1.158/IPA_Proje_Dokumanlar "${loginhome}/media/icdenetim" -o "username=${username},password=${password},uid=${userid},gid=${groupid}"
+
+echo "IPA_Proje_Dokumanlar folder is mounted under ${loginhome}/media/icdenetim"

@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Bismillah"
+processNumber=$(ps aux | grep davmail | head -n1 | grep -oP '\b\d{4}\b' | head -n1)
+echo $processNumber
+kill -15 $processNumber
+sleep 1
+echo "Mail server stopped or there was none already"

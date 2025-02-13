@@ -1,0 +1,35 @@
+#!/bin/bash
+a=$#
+i=0
+args=("$@")
+p=$(($a-1))
+if [ $p -eq 0 ]; then
+    eval "grep -lid recurse \"$1\" *"
+    exit 0
+fi
+while [ $i -le $p ]
+do
+    if [ $i -eq 0 ]
+    then
+    while IFS= read -rd ''; do
+	files+=("$REPLY")
+    done < <(grep --null -liId recurse "${args[$i]}" *)
+    j=0
+    for file in "${files[@]}"
+    do
+	    sf=\"$file\"
+	    searchFiles=$searchFiles" ""$sf"
+	    ((j++))
+    done
+    ((i++))
+    searchString="grep -li ${args[$i]} $searchFiles"
+    continue 1
+    fi
+    if [ $i -eq $p ]
+    then
+    break
+    fi
+    ((i++))
+    searchString="grep -li ${args[$i]} \$($searchString)"
+done
+eval "$searchString"

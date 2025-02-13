@@ -1,0 +1,94 @@
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+/* ! hard contrast: *background: #1d2021 */
+/* *background: #282828 */
+/* ! soft contrast: *background: #32302f */
+/* *foreground: #ebdbb2 */
+/* ! Black + DarkGrey */
+/* *color0:  #282828 */
+/* *color8:  #928374 */
+/* ! DarkRed + Red */
+/* *color1:  #cc241d */
+/* *color9:  #fb4934 */
+/* ! DarkGreen + Green */
+/* *color2:  #98971a */
+/* *color10: #b8bb26 */
+/* ! DarkYellow + Yellow */
+/* *color3:  #d79921 */
+/* *color11: #fabd2f */
+/* ! DarkBlue + Blue */
+/* *color4:  #458588 */
+/* *color12: #83a598 */
+/* ! DarkMagenta + Magenta */
+/* *color5:  #b16286 */
+/* *color13: #d3869b */
+/* ! DarkCyan + Cyan */
+/* *color6:  #689d6a */
+/* *color14: #8ec07c */
+/* ! LightGrey + White */
+/* *color7:  #a89984 */
+/* *color15: #ebdbb2 */
+
+/*----------Old color shcemes-----------------*/
+/* xterm*foreground: #BCBCBC */
+/* xterm*background: #262626 */
+/* xterm*color0:     #1C1C1C */
+/* xterm*color8:     #444444 */
+/* xterm*color1:     #AF5F5F */
+/* xterm*color9:     #FF8700 */
+/* xterm*color2:     #5F875F */
+/* xterm*color10:    #87AF87 */
+/* xterm*color3:     #87875F */
+/* xterm*color11:    #FFFFAF */
+/* xterm*color4:     #5F87AF */
+/* xterm*color12:    #8FAFD7 */
+/* xterm*color5:     #5F5F87 */
+/* xterm*color13:    #8787AF */
+/* xterm*color6:     #5F8787 */
+/* xterm*color14:    #5FAFAF */
+/* xterm*color7:     #6C6C6C */
+/* xterm*color15:    #FFFFFF */
+/* XTerm*pointerColor: #FFFFFF */
+/* XTerm*pointerColorBackground: #1C1C1C */
+/* XTerm*cursorColor: #AF5F5F */
+/* XTerm*cursorBlink: true */
+/*---------------------------*/
+/*XTerm.vt100.translations: #override \n\
+/*Ctrl <Key> period: smaller-vt-font() \n\ */
+/*Crl <Key> comma: larger-vt-font() \n\ */
+/*Shift Ctrl <Key> C: copy-selection(PRIMARY) \n\
+/*Shift Ctrl <Key> V: insert-selection(PRIMARY)*/
+xterm*foreground: #BCBCBC
+xterm*background: #262626
+xterm*color0:     #1C1C1C
+xterm*color8:     #444444
+xterm*color1:     #AF5F5F
+xterm*color9:     #FF8700
+xterm*color2:     #5F875F
+xterm*color10:    #87AF87
+xterm*color3:     #87875F
+xterm*color11:    #FFFFAF
+xterm*color4:     #5F87AF
+xterm*color12:    #8FAFD7
+xterm*color5:     #5F5F87
+xterm*color13:    #8787AF
+xterm*color6:     #5F8787
+xterm*color14:    #5FAFAF
+xterm*color7:     #6C6C6C
+xterm*color15:    #FFFFFF
+
+XTerm*pointerColor: #FFFFFF 
+XTerm*pointerColorBackground: #1C1C1C
+XTerm*cursorColor: #AF5F5F
+XTerm*cursorBlink: true
+
+xterm*faceName: Source Code Pro 
+xterm*faceSize: 12 
+XTerm.vt100.translations: #override \n\
+Ctrl <Key> minus: smaller-vt-font() \n\
+Ctrl <Key> plus: larger-vt-font()

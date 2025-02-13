@@ -1,0 +1,26 @@
+IMAPAccount work
+Host 127.0.0.1
+Port 5001
+User cagatay.cakir@sanayi.gov.tr
+PassCmd "pass cagatay.cakir@sanayi.gov.tr"
+# Pass Peace6618.
+SSLType None
+AuthMechs LOGIN
+
+IMAPStore work-remote
+Account work
+
+MaildirStore work-local
+Subfolders Verbatim
+Path ~/.mail/work/
+Inbox ~/.mail/work/Inbox
+
+Channel work
+Far :work-remote:
+Near :work-local:
+SyncState *
+Patterns *
+Create Both
+Sync All
+Expunge Near
+

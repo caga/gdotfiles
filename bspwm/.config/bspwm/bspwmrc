@@ -1,0 +1,51 @@
+#! /usr/bin/bash
+
+#Let's load Xresources
+xrdb -merge $HOME/.config/X11/Xresources
+#Home Setup:
+# xrandr --output DP-1 --rotate  left --right-of eDP-1
+# xrandr --output HDMI-1 --left-of eDP-1
+
+#Work Setup:
+xrandr --output DP-1 --rotate  right --left-of eDP-1
+
+#for mirror eDP-1 to hdmi-1
+# xrandr --output HDMI-1 --same-as eDP-1
+# xrandr --output DP-1 --same-as eDP-1
+
+
+#work triple monitors:
+bspc monitor DP-1 -d 1 2 3
+bspc monitor eDP-1 -d 4 5 6 7
+bspc monitor HDMI-1 -d 8 9 0
+
+
+#home triple monitors:
+# bspc monitor HDMI-1 -d 1 2 3
+# bspc monitor eDP-1 -d 4 5 6 7
+# bspc monitor DP-1 -d 8 9 0
+
+#single monitor
+# bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+
+#dual monitor
+# bspc monitor eDP-1 -d 1 2 3 4 5
+
+
+bspc config border_width         6
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Zathura desktop='^1' follow=on state=fullscreen
+bspc rule -a firefox-esr desktop='^8' follow=on state=fullscreen
+bspc rule -a  Chromium-bin-browser-chromium desktop='^8' follow=on state=fullscreen
+bspc rule -a Surf desktop='^8' follow=on state=fullscreen
+killall -q polybar
+while pgrep -x polybar > /dev/null; do sleep 1; done
+polybar &
+setxkbmap -model pc105 -layout us,tr -variant engram,  -option grp:ctrls_toggle &
+pgrep -x sxhkd > /dev/null || sxhkd -m 1 &
+xterm

@@ -1,0 +1,41 @@
+call plug#begin()
+"Plug '~/vim-notebox'
+Plug 'caga/vim-notebox'
+Plug 'felipec/notmuch-vim'
+Plug 'dhruvasagar/vim-table-mode'
+call plug#end()
+call plug#helptags()
+
+"scriptencoding utf-8
+"source $VIMRUNTIME/defaults.vim
+filetype plugin indent on
+syntax on
+set incsearch
+" set backup
+" set undofile
+set hlsearch
+"set autochdir
+let g:notes_author = "Çağatay Çakır"
+let g:notes_directory = "~/notes"
+let g:boxes = ["~/workprojectsnotes/", "~/notes/","~/worknotes2/"]
+
+let mapleader = ","
+augroup vimrcEx
+au!
+autocmd FileType text setlocal textwidth=78
+augroup END
+
+" To not to jump automatically from a quickfix buffer
+augroup MyQFCommand
+ au!
+ au FileType qf nnoremap <buffer><CR> <CR><C-W>p
+ au FileType qf nnoremap <buffer>j j<CR><C-W>p
+ au FileType qf nnoremap <buffer>k k<CR><C-W>p
+augroup END
+
+"To feed the files to quickfix list, errorformat is to be set as below
+set errorformat=%f
+
+"nmap <Leader>nf <Plug>nsearch;
+"nmap <Leader>wf <Plug>wsearch;
+"nmap <Leader>no <Plug>Newnote;

@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Bismillah"
+davmail ~/.config/davmail.properties &
+sleep 1
+echo "Mail server started"
