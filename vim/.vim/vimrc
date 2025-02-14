@@ -11,10 +11,11 @@ call plug#helptags()
 filetype plugin indent on
 syntax on
 set incsearch
-" set backup
-" set undofile
 set hlsearch
-"set autochdir
+" Mapping escape
+inoremap jk <Esc>
+
+
 let g:notes_author = "Çağatay Çakır"
 let g:notes_directory = "~/notes"
 let g:boxes = ["~/workprojectsnotes/", "~/notes/","~/worknotes2/"]
