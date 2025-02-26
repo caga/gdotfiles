@@ -7,17 +7,10 @@ setxkbmap -model pc105 -layout us,tr -variant engram,  -option grp:ctrls_toggle 
 
 pgrep -x sxhkd > /dev/null || sxhkd -m 1 &
 
-#Home pc setup
-
-xrandr --output HDMI-1 --above DP-1
-xrandr --output HDMI-2 --left-of DP-1
-xrandr --output DP-1 --primary 
-
-#Home Laptop Setup:
-#xrandr --output DP-1 --rotate  left --right-of eDP-1
-#xrandr --output HDMI-1 --left-of eDP-1
-#xrandr --output HDMI-1 --mode "1920x1080"
-
+#Home Setup:
+xrandr --output DP-1 --rotate  left --right-of eDP-1
+xrandr --output HDMI-1 --left-of eDP-1
+xrandr --output HDMI-1 --mode "1920x1080"
 #Work Setup:
 # xrandr --output DP-1 --rotate  right --left-of eDP-1
 
@@ -32,16 +25,10 @@ xrandr --output DP-1 --primary
 # bspc monitor HDMI-1 -d 8 9 0
 
 
-#home pc triple monitors:
-bspc wm -O HDMI-2 DP-1 HDMI-1
-bspc monitor HDMI-2 -d l1 l2 l3
-bspc monitor DP-1 -d m4 m5 m6 m7
-bspc monitor HDMI-1 -d a8 a9 a0
-
-#home laptop triple monitors:
-#bspc monitor HDMI-1 -d 1 2 3
-#bspc monitor eDP-1 -d 4 5 6 7
-#bspc monitor DP-1 -d 8 9 0
+#home triple monitors:
+bspc monitor HDMI-1 -d 1 2 3
+bspc monitor eDP-1 -d 4 5 6 7
+bspc monitor DP-1 -d 8 9 0
 
 #single monitor
 # bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
@@ -64,5 +51,4 @@ bspc rule -a Surf desktop='^1' follow=on state=fullscreen
 killall -q polybar
 while pgrep -x polybar > /dev/null; do sleep 1; done
 polybar &
-bspc desktop --focus ^4
 xterm
