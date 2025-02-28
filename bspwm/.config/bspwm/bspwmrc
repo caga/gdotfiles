@@ -57,10 +57,11 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc rule -a Zathura desktop='^8' follow=on state=fullscreen
-bspc rule -a firefox-esr desktop='^1' follow=on state=fullscreen
-bspc rule -a  Chromium-bin-browser-chromium desktop='^1' follow=on state=fullscreen
-bspc rule -a Surf desktop='^1' follow=on state=fullscreen
+bspc rule -a Zathura desktop='^1' follow=on state=fullscreen
+bspc rule -a  Chromium-browser-chromium desktop='^8' follow=on state=fullscreen
+bspc rule -a  Luakit desktop='^8' follow=on state=fullscreen
+#bspc rule -a firefox-esr desktop='^1' follow=on state=fullscreen
+#bspc rule -a Surf desktop='^1' follow=on state=fullscreen
 killall -q polybar
 while pgrep -x polybar > /dev/null; do sleep 1; done
 polybar &
