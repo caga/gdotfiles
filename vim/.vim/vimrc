@@ -1,8 +1,12 @@
 call plug#begin()
 "Plug '~/vim-notebox'
 Plug 'caga/vim-notebox'
-Plug 'felipec/notmuch-vim'
+"Plug 'felipec/notmuch-vim'
 Plug 'dhruvasagar/vim-table-mode'
+"Plug 'verlag/vimtex'
+Plug 'junegunn/fzf.vim'
+Plug 'ferdinandyb/bibtexcite.vim'
+"Plug 'tpope/scriptease.vim'
 call plug#end()
 call plug#helptags()
 
@@ -15,10 +19,17 @@ set hlsearch
 " Mapping escape
 inoremap jk <Esc>
 
+        "<system vim clipboard mappings>
+	"<system clipboard middle mouse>
+        noremap <Leader>y "*y
+        noremap <Leader>p "*p
+	"<c-c,c-v>
+        noremap <Leader>Y "+y
+        noremap <Leader>P "+p
 
 let g:notes_author = "Çağatay Çakır"
-let g:notes_directory = "~/notes"
-let g:boxes = ["~/workprojectsnotes/", "~/notes/","~/worknotes2/"]
+let g:notes_directory = "~/countryNotes"
+let g:boxes = ["~/countryNotes","~/notes"]
 
 let mapleader = ","
 augroup vimrcEx
@@ -40,3 +51,32 @@ set errorformat=%f
 "nmap <Leader>nf <Plug>nsearch;
 "nmap <Leader>wf <Plug>wsearch;
 "nmap <Leader>no <Plug>Newnote;
+
+"fzf.vim bibtex Integration
+"let $FZF_BIBTEX_SOURCES = g:notes_directory .. "/" .. g:boxes[0] .. ".bib"
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (len(bibtexcite#getcitekey("pandoc")) > 1)
+    call bibtexcite#showcite("pandoc")
+  elseif (len(bibtexcite#getcitekey("latex")) > 1)
+    call bibtexcite#showcite("latex")
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+autocmd FileType markdown  nnoremap <buffer> <silent> <leader>nc :BibtexciteInsert<CR>
+autocmd FileType markdown  inoremap <buffer> <silent> @@ <Esc>:BibtexciteInsert<CR>
+
+"tayland dosyasi icin bib file ataması
+"let g:bibtexcite_bibfile = "/home/osman/countryNotes/th.bib"
+let g:bibtexcite_bibfile = "/home/osman/countryNotes/tls.bib"
+
+"Open urls
+"nmap <leader>ou :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
+let g:netrw_browsex_viewer= "xdg-open"

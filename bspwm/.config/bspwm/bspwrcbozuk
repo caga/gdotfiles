@@ -1,0 +1,80 @@
+#! /bin/sh
+
+
+
+#Let's load Xresources
+xrdb -merge $HOME/.config/X11/Xresources
+
+#keyboard layout configuration
+
+setxkbmap -model pc105 -layout us,tr -variant engram,  -option grp:ctrls_toggle &
+
+pgrep -x sxhkd > /dev/null || sxhkd -m 1 & 
+#pgrep -x sxhkd > /dev/null
+#sxkd &
+
+#Home pc setup
+
+#xrandr --output HDMI-1 --above DP-1
+#xrandr --output HDMI-2 --left-of DP-1
+#xrandr --output DP-1 --primary 
+
+#Home Laptop Setup:
+#xrandr --output DP-1 --rotate  left --right-of eDP-1
+#xrandr --output HDMI-1 --left-of eDP-1
+#xrandr --output HDMI-1 --mode "1920x1080"
+
+#Work Setup:
+# xrandr --output DP-1 --rotate  right --left-of eDP-1
+
+#for mirror eDP-1 to hdmi-1
+# xrandr --output HDMI-1 --same-as eDP-1
+# xrandr --output DP-1 --same-as eDP-1
+
+
+#work triple monitors:
+# bspc monitor DP-1 -d 1 2 3
+# bspc monitor eDP-1 -d 4 5 6 7
+# bspc monitor HDMI-1 -d 8 9 0
+
+
+#home pc triple monitors:
+#bspc wm -O HDMI-2 DP-1 HDMI-1
+#bspc monitor HDMI-2 -d l1 l2 l3
+#bspc monitor DP-1 -d m4 m5 m6 m7
+#bspc monitor HDMI-1 -d a8 a9 a0
+
+#home laptop triple monitors:
+#bspc monitor HDMI-1 -d 1 2 3
+#bspc monitor eDP-1 -d 4 5 6 7
+#bspc monitor DP-1 -d 8 9 0
+
+#single monitor
+#bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+
+
+#laptop and portable monitor
+#bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9 0
+
+#dual monitor
+xrandr --output DP-1 --left-of eDP-1
+bspc monitor DP-1 -d 1 2 3 4 5
+bspc monitor eDP-1 -d 6 7 8 9 0    
+
+bspc config border_width         6
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a firefox desktop='^1' follow=on state=fullscreen
+bspc rule -a Zathura desktop='^2' follow=on state=fullscreen
+#bspc rule -a  Chromium-browser-chromium desktop='^8' follow=on state=fullscreen
+bspc rule -a  Luakit desktop='^8' follow=on state=fullscreen
+#bspc rule -a Surf desktop='^1' follow=on state=fullscreen
+killall -q polybar
+while pgrep -x polybar > /dev/null; do sleep 1; done
+polybar &
+#bspc desktop --focus ^6
+xterm

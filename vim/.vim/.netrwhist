@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/osman/countryNotes/IndicatorReports/mdReports'
+let g:netrw_dirhist_9='/home/osman/countryNotes/IndicatorReports'
+let g:netrw_dirhist_8='/home/osman/countryNotes/IndicatorReports/mdReports'
+let g:netrw_dirhist_7='/home/osman/countryNotes/IndicatorReports'
+let g:netrw_dirhist_6='/home/osman/countryNotes'
+let g:netrw_dirhist_5='/home/osman/.vim/plugged/vim-notebox/plugin'
+let g:netrw_dirhist_4='/home/osman/.vim/plugged/vim-notebox'
+let g:netrw_dirhist_3='/home/osman/.vim/plugged/vim-notebox/plugin'
+let g:netrw_dirhist_2='/home/osman/.vim/plugged/vim-notebox'
+let g:netrw_dirhist_1='/home/osman/.vim/plugged/vim-notebox/ftplugin'
