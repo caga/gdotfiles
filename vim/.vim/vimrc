@@ -7,6 +7,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/fzf.vim'
 Plug 'ferdinandyb/bibtexcite.vim'
 "Plug 'tpope/scriptease.vim'
+Plug 'sillybun/vim-repl'
 call plug#end()
 call plug#helptags()
 
@@ -29,7 +30,7 @@ inoremap jk <Esc>
 
 let g:notes_author = "Çağatay Çakır"
 let g:notes_directory = "~/countryNotes"
-let g:boxes = ["~/countryNotes","~/notes"]
+let g:boxes = ["~/countryNotes","~/notes", "~/oldOldNotes/MyNotes/", "~/oldOldNotes/OldNotes/"]
 
 let mapleader = ","
 augroup vimrcEx
@@ -74,8 +75,8 @@ autocmd FileType markdown  nnoremap <buffer> <silent> <leader>nc :BibtexciteInse
 autocmd FileType markdown  inoremap <buffer> <silent> @@ <Esc>:BibtexciteInsert<CR>
 
 "tayland dosyasi icin bib file ataması
-"let g:bibtexcite_bibfile = "/home/osman/countryNotes/th.bib"
-let g:bibtexcite_bibfile = "/home/osman/countryNotes/tls.bib"
+let g:bibtexcite_bibfile = "/home/osman/countryNotes/tha.bib"
+"let g:bibtexcite_bibfile = "/home/osman/countryNotes/tls.bib"
 
 "Open urls
 "nmap <leader>ou :silent execute "!xdg-open " . shellescape("<cWORD>")<CR>
